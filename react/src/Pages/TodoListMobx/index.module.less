@@ -1,0 +1,61 @@
+.todolist_container {
+    width: 500px;
+    margin: 0 auto;
+    padding: 40px;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    .input_wrapper {
+        position: relative;
+        .todo_input {
+            width: 100%;
+            height: 50px;
+            font-size: 20px;
+            padding-left: 20px;
+            border-radius: 5px;
+        }
+        .todo_confirm_btn {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            border-radius: 4px;
+            width: 100px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            cursor: pointer;
+            color: #fff;
+            background-color: green;
+            font-size: 16px;
+        }
+    }
+    .todo_list_container {
+        position: relative;
+        margin-top: 20px;
+        .todo_item {
+            width: 100%;
+            line-height: 40px;
+            padding-left: 20px;
+            font-size: 16px;
+            color: #999;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+            position: relative;
+            .delete_btn {
+                position: absolute;
+                color: red;
+                opacity: .7;
+                font-size: 30px;
+                right: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                transition: color 0.4s;
+                cursor: pointer;
+                &:hover {
+                    opacity: .95;
+                }
+            }
+        }
+        
+    }
+}
