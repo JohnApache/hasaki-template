@@ -2,20 +2,23 @@ import React from "react";
 import styles from "./App.module.less";
 import logo from './logo.svg';
 import { BrowserRouter as Router, Link } from "react-router-dom";
-// import { Provider as ReduxProvider } from "react-redux";
-// import configStore from "./Redux/ConfigureStore";
 import AppRouter from  "./Router";
 import RoutesConfig from "./Router/config";
-
+<%_ if(locals.store === 'mobx'){ _%>
 import {Provider as MobxProvider} from 'mobx-react'
 import mobxStore from './Mobx/index';
-// const reduxStore = configStore();
-
+<%_ } _%>
+<%_ if(locals.store === 'redux'){ _%>
+import { Provider as ReduxProvider } from "react-redux";
+import configStore from "./Redux/ConfigureStore";
+const reduxStore = configStore();
+<%_ } _%>
 
 const App = () => {
 	return (
 		<div>
-			{/* <ReduxProvider store={reduxStore}>
+			<%_ if(locals.store === 'redux'){ _%>
+			<ReduxProvider store={reduxStore}>
 				<Router>
 					<div className={styles.App}>
 						<div className={styles.App_Content}>
@@ -39,7 +42,9 @@ const App = () => {
 						</div>
 					</div>
 				</Router>
-			</ReduxProvider> */}
+			</ReduxProvider>
+			<%_ } _%>
+			<%_ if(locals.store === 'mobx'){ _%>
 			<MobxProvider {...mobxStore}>
 				<Router>
 					<div className={styles.App}>
@@ -65,6 +70,7 @@ const App = () => {
 					</div>
 				</Router>
 			</MobxProvider>
+			<%_ } _%>
 		</div>
 	);
 };
