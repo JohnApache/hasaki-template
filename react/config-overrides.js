@@ -41,7 +41,8 @@ module.exports = override(
         style: true // `style: true` 会加载 less 文件
     }),
     <%_ } _%>
-    // lessLoader 要放在 fixBabelImports 之后
+    <%_ if(locals.preprocessor === 'less') { _%>
+   // lessLoader 要放在 fixBabelImports 之后
     addLessLoader({
         // strictMath: true, 
         // noIeCompat: true,
@@ -49,4 +50,5 @@ module.exports = override(
         javascriptEnabled: true,
         modifyVars: { '@primary-color': '#1DA57A' },
     }),
+    <%_ } _%>
 )
