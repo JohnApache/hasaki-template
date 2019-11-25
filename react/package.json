@@ -46,7 +46,7 @@
     "redux-logger": "^3.0.6",
     <%_ } _%>
     <%_ if(locals.store === 'redux' && locals.reduxPlugin === 'redux-saga'){ _%>
-    "redux-saga": "^1.1.3",
+    "redux-saga": "^1.1.3"
     <%_ } else { _%>
     "redux-thunk": "^2.3.0"
     <%_ } _%>

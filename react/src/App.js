@@ -7,13 +7,13 @@ import RoutesConfig from "./Router/config";
 import {Provider as MobxProvider} from 'mobx-react'
 import mobxStore from './Mobx/index';
 <%_ } _%>
+import styles from "./App.module.<%- locals.preprocessor %>";
 <%_ if(locals.store === 'redux'){ _%>
 import { Provider as ReduxProvider } from "react-redux";
 import configStore from "./Redux/ConfigureStore";
 const reduxStore = configStore();
 <%_ } _%>
 
-import styles from "./App.module.<%- locals.preprocessor %>";
 
 const App = () => {
 	return (

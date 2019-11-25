@@ -6,18 +6,22 @@ const RoutesConfig = [
         Exact: true,
         Name: 'CounterRedux',
     },
+    <%_ if(locals.reduxPlugin === 'redux-thunk'){ _%>
     {
         Component: () => import(/* webpackChunkName: "TodoListThunk" */'../Pages/TodoListThunk'),
         Path: '/todolistThunk',
         Exact: true,
         Name: 'TodoListThunk'
     },
+    <%_ } _%> 
+    <%_ if(locals.reduxPlugin === 'redux-saga'){ _%>
     {
         Component: () => import(/* webpackChunkName: "TodoListSaga" */'../Pages/TodoListSaga'),
         Path: '/todolistSaga',
         Exact: true,
         Name: 'TodoListSaga'
-    }
+    },
+    <%_ } _%> 
 ]
 <%_ } _%>     
 <%_ if(locals.store === 'mobx'){ _%>
