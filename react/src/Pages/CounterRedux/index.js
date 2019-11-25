@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-import styles from "./index.module.less";
+import styles from "./index.module.<%- locals.preprocessor %>";
 import { addNum, subtractNum } from "../../Redux/Modal/CounterRedux/action";
 class Counter extends React.PureComponent {
 	addNum = () => {

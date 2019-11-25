@@ -1,7 +1,5 @@
 module.exports = {
-    parseExclude: [
-
-    ],
+    parseExclude: [],
     parseInclude: [],
     ignore: [],
     question: [
@@ -36,8 +34,14 @@ module.exports = {
             name: 'preprocessor',
             choices() {
                 return [
-                    'less',
-                    'sass'
+                    {
+                        name: `less`,
+                        value: `less`,
+                    }, 
+                    {
+                        name: `sass`,
+                        value: `scss`,
+                    }
                 ]
             }
         },
@@ -54,18 +58,12 @@ module.exports = {
             store,
             reduxPlugin,
             preprocessor,
-            useAntd
         } = answers;
+
         const include = [];
         const exclude = [];
     
         if(store === 'mobx') {
-            include.push({
-                path: './src/Mobx'
-            }, {
-                path: './src/Pages'
-            });
-            
             exclude.push({
                 path: './src/Redux'
             }, {
@@ -74,14 +72,10 @@ module.exports = {
                 path: './src/Pages/TodoListSaga'
             }, {
                 path: './src/Pages/TodoListSaga'
+            }, {
+                path: './src/Pages/TodoListThunk'
             });
         }else {
-            include.push({
-                path: './src/Redux'
-            }, {
-                path: './src/Pages'
-            });
-            
             exclude.push({
                 path: './src/Mobx'
             }, {
@@ -101,6 +95,18 @@ module.exports = {
                     path: './src/Redux/Modal/TodoListThunk'
                 });
             }
+        }
+
+        if(preprocessor === 'less') {
+            exclude.push({
+                match: /^.+\.scss$/
+            })
+        }else {
+            exclude.push({
+                path: './.npmrc'
+            }, {
+                match: /^.+\.less$/
+            })
         }
 
         return {

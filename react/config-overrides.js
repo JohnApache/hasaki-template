@@ -4,7 +4,9 @@ const {
     addDecoratorsLegacy,
     // addWebpackAlias,
     // addWebpackExternals,
+    <%_ if(locals.useAntd) { _%>
     fixBabelImports,
+    <%_ } _%>
     override,
 } = require('customize-cra');
 
@@ -30,13 +32,15 @@ module.exports = override(
     //     libraryDirectory: "",
     //     camel2DashComponentName: false
     // }),
-
+    
+    <%_ if(locals.useAntd) { _%>
     // 设置按需加载antd
     fixBabelImports('antd', {
         libraryName: "antd",
         libraryDirectory: "es",
         style: true // `style: true` 会加载 less 文件
     }),
+    <%_ } _%>
     // lessLoader 要放在 fixBabelImports 之后
     addLessLoader({
         // strictMath: true, 

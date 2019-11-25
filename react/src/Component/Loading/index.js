@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./index.module.less";
+import style from "./index.module.<%- locals.preprocessor %>";
 
 const LoadingComponent = () => {
     return (

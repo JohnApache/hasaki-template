@@ -1,7 +1,7 @@
 import React from "react";
 import { observer, inject } from "mobx-react";
 
-import styles from "./index.module.less";
+import styles from "./index.module.<%- locals.preprocessor %>";
 
 @inject('TodoListStore')
 @observer

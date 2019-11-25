@@ -1,0 +1,53 @@
+.App {
+    text-align: center;
+    .App_Content {
+        background-color: #282c34;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(10px + 2vmin);
+        color: white;
+        .App_Logo {
+            height: 100px;
+        }
+        .App_Main {
+            height: 500px;
+            width: 100%;
+            background-color: #fff;
+            position: relative;
+            padding: 20px;
+            .Button_Group {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                height: 40px;
+                margin: 20px;
+                .Button {
+                    display: inline-block;
+                    padding: 0 20px;
+                    height: 40px;
+                    line-height: 40px;
+                    font-size: 20px;
+                    background-color: deeppink;
+                    border-radius: 4px;
+                    margin: 0 20px;
+                    text-decoration: none;
+                    color: #fff;
+                    &:hover {
+                        opacity: 0.7;
+                    }
+                }
+            }
+            
+        }
+    }
+}
+  
+
+
+
+
+

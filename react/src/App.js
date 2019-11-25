@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./App.module.less";
 import logo from './logo.svg';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import AppRouter from  "./Router";
@@ -13,6 +12,8 @@ import { Provider as ReduxProvider } from "react-redux";
 import configStore from "./Redux/ConfigureStore";
 const reduxStore = configStore();
 <%_ } _%>
+
+import styles from "./App.module.<%- locals.preprocessor %>";
 
 const App = () => {
 	return (

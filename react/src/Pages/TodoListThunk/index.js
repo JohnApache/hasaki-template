@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { deleteItem, handleAddItem } from "../../Redux/Modal/TodoListThunk/action";
-import styles from "./index.module.less";
+import styles from "./index.module.<%- locals.preprocessor %>";
 
 class TodoList extends React.PureComponent {
 	constructor(props) {
