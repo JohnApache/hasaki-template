@@ -89,10 +89,14 @@ module.exports = {
                     path: './src/Redux/Modal/TodoListSaga'
                 }, {
                     path: './src/Redux/RootSaga.js'
+                }, {
+                    path: './src/Pages/TodoListSaga'
                 });
             }else {
                 exclude.push({
                     path: './src/Redux/Modal/TodoListThunk'
+                }, {
+                    path: './src/Pages/TodoListThunk'
                 });
             }
         }

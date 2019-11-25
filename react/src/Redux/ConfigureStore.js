@@ -5,11 +5,11 @@ import thunkMiddleware from 'redux-thunk';
 <%_ } _%>
 <%_ if(locals.reduxPlugin === 'redux-saga'){ _%>
 import createSagaMiddleware from 'redux-saga';
+import sagas from './RootSaga';
 <%_ } _%>
 
 
 import reducers from './RootReducers';
-import sagas from './RootSaga';
 
 
 
