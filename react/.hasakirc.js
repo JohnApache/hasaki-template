@@ -100,11 +100,11 @@ module.exports = {
         if(preprocessor === 'less') {
             exclude.push({
                 match: /^.+\.scss$/
+            }, {
+                path: './.npmrc'
             })
         }else {
             exclude.push({
-                path: './.npmrc'
-            }, {
                 match: /^.+\.less$/
             })
         }
