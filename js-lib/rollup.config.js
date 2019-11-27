@@ -3,7 +3,9 @@ import resolve from 'rollup-plugin-node-resolve';
 import common from 'rollup-plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import babel from 'rollup-plugin-babel';
+<%_ if(locals.useTs) _%>
 import typescript from 'rollup-plugin-typescript2';
+<%_ } _%>
 
 import os from 'os';
 
@@ -11,9 +13,10 @@ const cpuNums = os.cpus().length;
 
 const DEV_BUILD_CONFIG = {
     input: {
-        main: path.resolve(__dirname, './src/index.ts'),
+        main: path.resolve(__dirname, './src/index.<% if(locals.useTs){ %>ts<% } else { %>js<% } %>'),
     },
     plugins: [
+        <%_ if(locals.useTs) _%>
         typescript({
             tsconfigOverride: {
                 compilerOptions: {
@@ -21,6 +24,7 @@ const DEV_BUILD_CONFIG = {
                 },
             },
         }),
+        <%_ } _%>
         resolve(),
         common({
             include: 'node_modules/**', // 包括
@@ -47,9 +51,10 @@ const DEV_BUILD_CONFIG = {
 
 const PROD_BUILD_TASK = {
     input: {
-        main: path.resolve(__dirname, './src/index.ts'),
+        main: path.resolve(__dirname, './src/index.<% if(locals.useTs){ %>ts<% } else { %>js<% } %>'),
     },
     plugins: [
+        <%_ if(locals.useTs) _%>
         typescript({
             tsconfigOverride: {
                 compilerOptions: {
@@ -57,6 +62,7 @@ const PROD_BUILD_TASK = {
                 },
             },
         }),
+        <%_ } _%>
         resolve(),
         common({
             include: 'node_modules/**', // 包括
