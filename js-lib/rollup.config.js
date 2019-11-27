@@ -3,7 +3,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import common from 'rollup-plugin-commonjs';
 import { terser } from 'rollup-plugin-terser';
 import babel from 'rollup-plugin-babel';
-<%_ if(locals.useTs) _%>
+<%_ if(locals.useTs){ _%>
 import typescript from 'rollup-plugin-typescript2';
 <%_ } _%>
 
@@ -16,7 +16,7 @@ const DEV_BUILD_CONFIG = {
         main: path.resolve(__dirname, './src/index.<% if(locals.useTs){ %>ts<% } else { %>js<% } %>'),
     },
     plugins: [
-        <%_ if(locals.useTs) _%>
+        <%_ if(locals.useTs){ _%>
         typescript({
             tsconfigOverride: {
                 compilerOptions: {
@@ -54,7 +54,7 @@ const PROD_BUILD_TASK = {
         main: path.resolve(__dirname, './src/index.<% if(locals.useTs){ %>ts<% } else { %>js<% } %>'),
     },
     plugins: [
-        <%_ if(locals.useTs) _%>
+        <%_ if(locals.useTs){ _%>
         typescript({
             tsconfigOverride: {
                 compilerOptions: {
