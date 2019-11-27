@@ -1,0 +1,71 @@
+{
+  "name": "@dking/hasaki-cli-template",
+  "version": "0.0.1",
+  "description": "@dking/hasaki-cli init application",
+  "main": "index.js",
+  "keywords": [],
+  "author": "",
+  "license": "",
+  "scripts": {
+    "build": "rollup -c",
+    "format": "prettier-eslint 'src/**/*.{js,jsx<%if(locals.useTs){%>,ts,tsx<%}%>}' --write",
+    "lint": "eslint src --ext .jsx --ext .js <%if(locals.useTs){%>--ext .tsx --ext .ts<%}%> --cache --fix",
+    "test": "nyc --reporter=text mocha --require <%if(locals.useTs){%>ts-node/register 'test/**/*.{ts,tsx}'<%}else{%>@babel/register 'test/**/*.{js,jsx}'<%}%> -t 5000",
+    "test:reporter": "nyc --reporter=lcov --reporter=text mocha --require <%if(locals.useTs){%>ts-node/register 'test/**/*.{ts,tsx}'<%}else{%>@babel/register 'test/**/*.{js,jsx}'<%}%> -t 5000 --reporter=mochawesome",
+    "watch": "rollup --watch"
+  },
+  "lint-staged": {
+    "**/*.{jsx,js,ts,tsx}": [
+      "prettier-eslint --write",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/register": "^7.5.5",
+    <%_ if(locals.useTs){ _%>
+    "@types/chai": "^4.2.0",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.7.5",
+    "@typescript-eslint/eslint-plugin": "^2.6.0",
+    "@typescript-eslint/parser": "^2.6.0",
+    <%_ } _%>  
+    "chai": "^4.2.0",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    <%_ if(locals.useTs){ _%>
+    "eslint-import-resolver-typescript": "^2.0.0",
+    <%_ } _%>  
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-promise": "^4.1.1",
+    "husky": "^2.3.0",
+    "lint-staged": "^8.1.7",
+    "mocha": "^6.2.0",
+    "mochawesome": "^4.1.0",
+    "nyc": "^14.1.1",
+    "prettier-eslint-cli": "^4.7.1",
+    "rollup": "^1.21.4",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    <%_ if(locals.useTs){ _%>
+    "rollup-plugin-terser": "^5.1.2",
+    "rollup-plugin-typescript2": "^0.24.3",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.6.4"
+    <%_ }else{ _%> 
+    "rollup-plugin-terser": "^5.1.2"  
+    <%_ } _%>  
+  },
+  "dependencies": {
+    "@babel/runtime-corejs3": "^7.5.5"
+  }
+}
