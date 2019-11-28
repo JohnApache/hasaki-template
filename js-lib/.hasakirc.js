@@ -31,7 +31,7 @@ module.exports = {
             }, {
                 path: './test/index.test.ts'
             }, {
-                path: './test/index.test.ts'
+                path: './tsconfig.json'
             })
         }
 
